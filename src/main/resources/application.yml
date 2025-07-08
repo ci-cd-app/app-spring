@@ -1,0 +1,20 @@
+server:
+  port: 10000
+  servlet:
+    session:
+      tracking-modes: COOKIE
+      cookie:
+        http-only: true
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: spring
+    password: 1234
+
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+  type-aliases-package: com.example.app.domain;com.example.app.dto
+  configuration:
+    map-underscore-to-camel-case: true
