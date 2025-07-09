@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" href="/css/member/login.css">
+</head>
+<body>
+<div class="container">
+    <div class="login-box">
+        <h2>로그인</h2>
+        <form action="/member/login" id="loginForm" method="post" th:object="${memberVO}">
+            <div class="input-group">
+                <input type="email" id="email" th:field="*{memberEmail}" required>
+                <label for="email">이메일</label>
+                <span class="highlight"></span>
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="password" th:field="*{memberPassword}" required>
+                <label for="password">비밀번호</label>
+                <span class="highlight"></span>
+            </div>
+
+            <div class="remember-forgot">
+                <a href="#" class="forgot-password">비밀번호 찾기</a>
+            </div>
+
+            <button type="submit" class="login-btn">로그인</button>
+
+            <div class="signup-link">
+                계정이 없으신가요? <a href="/member/join">회원가입</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+<script src="/js/member/login.js"></script>
+</html>

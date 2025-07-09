@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인 페이지</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+<div class="welcome-container">
+    <div class="welcome-content">
+        <div class="welcome-text">
+            <div class="user-greeting">
+                <span class="emoji">👋</span>
+                <span class="name" id="userName" th:text="${session.member.memberName}"></span>님
+            </div>
+            <div class="message">오늘도 좋은 하루 되세요!</div>
+        </div>
+        <div class="time-container">
+            <div class="current-time" id="currentTime">00:00</div>
+            <div class="current-date" id="currentDate">2025년 7월 9일</div>
+        </div>
+        <div class="logout-container">
+            <button class="logout-btn" onclick="logout()">
+                <span class="logout-text">Logout</span>
+                <span class="logout-icon-wrapper">
+            <svg class="logout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+        </span>
+            </button>
+        </div>
+    </div>
+</div>
+</body>
+<script src="/js/index.js"></script>
+</html>

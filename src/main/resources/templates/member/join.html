@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="/css/member/join.css">
+</head>
+<body>
+<div class="container">
+    <div class="signup-box">
+        <h2>회원가입</h2>
+        <form action="/member/join" method="post" id="signupForm" th:object="${memberVO}">
+            <div class="input-group">
+                <input type="text" id="name" th:field="*{memberName}" required>
+                <label for="name">이름</label>
+                <span class="highlight"></span>
+            </div>
+
+            <div class="input-group">
+                <input type="email" id="email" th:field="*{memberEmail}" required>
+                <label for="email">이메일</label>
+                <span class="highlight"></span>
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="password" th:field="*{memberPassword}" required>
+                <label for="password">비밀번호</label>
+                <span class="highlight"></span>
+            </div>
+
+            <button type="submit" class="signup-btn">가입하기</button>
+        </form>
+    </div>
+</div>
+</body>
+<script src="/js/member/join.js"></script>
+</html>
