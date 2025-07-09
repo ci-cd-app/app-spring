@@ -5,6 +5,8 @@ server:
       tracking-modes: COOKIE
       cookie:
         http-only: true
+        secure: false
+        same-site: lax
 
 spring:
   datasource:
