@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// 로그아웃 함수
+// 로그아웃
 function logout() {
     if(confirm('로그아웃 하시겠습니까?')) {
         // 로그아웃 처리 애니메이션
