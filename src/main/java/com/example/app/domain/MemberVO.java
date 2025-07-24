@@ -14,7 +14,6 @@ import java.io.Serializable;
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class MemberVO implements Serializable {
-//    v1.0
     @Serial
     private static final long serialVersionUID = 1L;
 
