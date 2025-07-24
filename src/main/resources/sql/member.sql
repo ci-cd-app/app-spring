@@ -4,4 +4,5 @@ create table tbl_member(
     member_email varchar(255) unique not null,
     member_password varchar(255) not null
 );
+
 select * from tbl_member;
