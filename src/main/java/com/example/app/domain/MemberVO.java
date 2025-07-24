@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 @Component
@@ -13,6 +14,9 @@ import java.io.Serializable;
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class MemberVO implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     @EqualsAndHashCode.Include
     private Long id;
     private String memberName;
