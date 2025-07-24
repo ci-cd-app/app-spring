@@ -17,7 +17,7 @@ spring:
   session:
     redis:
       repository-type: indexed
-      flush-mode: on_save
+      flush-mode: immediate
   data:
     redis:
       host: 3.39.191.138
