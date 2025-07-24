@@ -9,9 +9,7 @@ on:
 
 jobs:
   deploy:
-    if: >
-      github.event.pull_request.merged == true &&
-      github.event.pull_request.head.repo.fork == true
+    if: github.event.pull_request.merged == true && github.event.pull_request.head.repo.fork == true
     runs-on: ubuntu-latest
 
     strategy:
