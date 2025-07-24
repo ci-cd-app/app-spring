@@ -2,8 +2,10 @@ name: Deploy to Multiple EC2s
 
 on:
   pull_request:
-    types: [closed]
-    branches: [master]
+    types:
+      - closed
+    branches:
+      - master
 
 jobs:
   deploy:
@@ -15,10 +17,8 @@ jobs:
     strategy:
       matrix:
         include:
-        - name: EC2_HOST1
-          host: ${{ secrets.EC2_HOST1 }}
-        - name: EC2_HOST2
-          host: ${{ secrets.EC2_HOST2 }}
+          - name: EC2_HOST1
+          - name: EC2_HOST2
 
     steps:
     - name: Checkout code
