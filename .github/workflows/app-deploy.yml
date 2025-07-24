@@ -1,12 +1,15 @@
 name: Deploy to Multiple EC2s
 
 on:
-  push:
-    branches:
-      - master
+  pull_request:
+    types: [closed]
+    branches: [master]
 
 jobs:
   deploy:
+    if: >
+      github.event.pull_request.merged == true &&
+      github.event.pull_request.head.repo.fork == true
     runs-on: ubuntu-latest
 
     strategy:
