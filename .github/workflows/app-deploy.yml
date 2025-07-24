@@ -1,31 +1,26 @@
 name: Deploy to Multiple EC2s
 
 on:
-  pull_request:
-    types:
-      - closed
+  push:
     branches:
       - master
 
 jobs:
   deploy:
-    if: github.event.pull_request.merged == true && github.event.pull_request.head.repo.fork == true
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         include:
           - name: EC2_HOST1
-            host: ${{ secrets.EC2_HOST1 }}
           - name: EC2_HOST2
-            host: ${{ secrets.EC2_HOST2 }}
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set HOST env var
-      run: echo "HOST=${{ matrix.host }}" >> $GITHUB_ENV
+    - name: Set HOST env var from secrets
+      run: echo "HOST=${{ secrets[matrix.name] }}" >> $GITHUB_ENV
 
     - name: Set up SSH
       run: |
@@ -33,11 +28,9 @@ jobs:
         echo "${{ secrets.EC2_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -H "$HOST" >> ~/.ssh/known_hosts
-
     - name: Copy project to EC2
       run: |
         rsync -avz -e "ssh -i ~/.ssh/id_rsa" . ${{ secrets.EC2_USER }}@$HOST:/home/ubuntu/app
-
     - name: Build & Run Docker on EC2
       run: |
         ssh -i ~/.ssh/id_rsa ${{ secrets.EC2_USER }}@$HOST << 'EOF'
@@ -47,7 +40,6 @@ jobs:
           docker rmi app || true
           docker build -t app .
           docker run -d -p 80:10000 --name app app
-
     - name: Clean up dangling images
       if: success()  # 이전 step이 성공했을 때만 실행
       run: |
