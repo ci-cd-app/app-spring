@@ -31,17 +31,17 @@ jobs:
 
     - name: Copy project to EC2
       run: |
-        rsync -avz -e "ssh -i ~/.ssh/id_rsa" . ${{ secrets.EC2_USER }}@$HOST:/home/ubuntu/simple
+        rsync -avz -e "ssh -i ~/.ssh/id_rsa" . ${{ secrets.EC2_USER }}@$HOST:/home/ubuntu/app
 
     - name: Build & Run Docker on EC2
       run: |
         ssh -i ~/.ssh/id_rsa ${{ secrets.EC2_USER }}@$HOST << 'EOF'
-          cd /home/ubuntu/simple
-          docker stop simple || true
-          docker rm simple || true
-          docker rmi simple-app || true
-          docker build -t simple-app .
-          docker run -d -p 80:10000 --name simple simple-app
+          cd /home/ubuntu/app
+          docker stop app || true
+          docker rm app || true
+          docker rmi app || true
+          docker build -t app .
+          docker run -d -p 80:10000 --name app app
 
     - name: Clean up dangling images
       if: success()  # 이전 step이 성공했을 때만 실행
