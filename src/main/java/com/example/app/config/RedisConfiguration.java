@@ -11,7 +11,6 @@ import org.springframework.data.redis.repository.configuration.EnableRedisReposi
 @Configuration
 @EnableRedisRepositories
 public class RedisConfiguration {
-//    ref yml
     @Value("${spring.data.redis.host}")
     private String redisHost;
 
