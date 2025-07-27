@@ -11,7 +11,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://3.39.191.138:3306/spring?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    url: jdbc:mysql://43.200.179.241:3306/spring?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: app
     password: 1234
   session:
@@ -20,7 +20,7 @@ spring:
       flush-mode: immediate
   data:
     redis:
-      host: 3.39.191.138
+      host: 43.200.179.241
       port: 6379
 
 
